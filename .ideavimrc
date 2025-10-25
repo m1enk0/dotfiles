@@ -1,17 +1,21 @@
-"" Source your .vimrc
-" gelguy/wilder.nvim
-source ~/.vimrc
 set showmode
 set showcmd
 set visualbell
-"set multiple-cursors
 
 " IDEAVIM SPECIFICS
 " set NERDTree
-set keep-english-in-normal
+" set multiple-cursors
+" let keep_input_source_in_normal="com.apple.keylayout.ABC" 
+" set keep-english-in-normal
 set exchange
 set highlightedyank
 set textobj-indent
+set surround
+set commentary
+set enableConsole
+nmap <leader>w <Nop>
+set idearefactormode=keep
+set ideavimsupport=dialog,singleline,console
 
 " let g:NERDTreeMapPreview="l"
 
@@ -34,6 +38,7 @@ map gi <Action>(GotoImplementation)
 map gs <Action>(GotoSuperMethod)
 map <Space>gb <Action>(ShowExecutionPoint)
 map <C-p> <Action>(ParameterInfo)
+nmap gcc <Action>(CommentByLineComment)
 
 " Search
 map <leader>fb <Action>(ViewBreakpoints)
@@ -63,9 +68,11 @@ map <leader>kk <Action>(Git.Menu)
 map <leader>kb <Action>(Git.Branches)
 map <leader>km <Action>(Vcs.MoveChangedLinesToChangelist)
 map <leader>ku <Action>(Git.Fetch)
+map <leader>ka <Action>(Annotate)
+map <leader>kd <Action>(ActivateVcsChangesToolWindow)
 
 map <C-A-/> <Action>(QuickEvaluateExpression)
-map <leader>w <Action>(NextWindow)
+map <leader>W <Action>(NextWindow)
 "map <leader>wn <Action>(NextWindow)
 "map <leader>wp <Action>(PreviousWindow)
 
@@ -75,7 +82,12 @@ map <leader>sw <Action>(SurroundWith)
 map ]] <Action>(GotoNextError)
 map [[ <Action>(GotoPreviousError)
 
-vmap gc <Action>(CommentByLineComment)
-nmap gcc <Action>(CommentByLineComment)
-
 map <leader>mm <Action>(ToggleFullScreen)
+
+map <leader>cp <Action>(CopyPaths)
+nmap <silent> <leader><Esc> :noh<cr>
+nmap <silent> <A-i> :noh<cr>
+" nmap <silent> <A-i> <cmd>noh<cr><cmd>echon ''<cr>
+
+map - <Action>(SelectInProjectView)
+map <leader>b <Action>(ActivateVcsChangesToolWindow)
