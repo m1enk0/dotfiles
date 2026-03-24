@@ -1,8 +1,9 @@
 let g:mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
 
-highlight CursorLine cterm=NONE ctermbg=DarkGray ctermfg=NONE guibg=NONE guifg=NONE
-highlight CursorLinenr cterm=NONE ctermbg=DarkGray ctermfg=NONE guibg=NONE guifg=NONE
+highlight CursorLine cterm=NONE ctermbg=238
+highlight CursorLinenr cterm=NONE ctermbg=238
+highlight Search ctermbg=237
 
 augroup autosave
     autocmd!
