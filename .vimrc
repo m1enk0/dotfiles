@@ -1,32 +1,33 @@
 let g:mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
 
+highlight CursorLine cterm=NONE ctermbg=DarkGray ctermfg=NONE guibg=NONE guifg=NONE
+highlight CursorLinenr cterm=NONE ctermbg=DarkGray ctermfg=NONE guibg=NONE guifg=NONE
+
+augroup autosave
+    autocmd!
+    autocmd TextChanged * silent! write
+augroup END
+
 set number relativenumber
 set cursorline
 set undofile
 set gdefault
-" set termguicolors
 set incsearch
 set hlsearch
-" syntax on
 set noswapfile
 set scrolloff=999
-" set smartindent
 set ignorecase
 set smartcase
 set nowrap
-" set timeoutlen=10000
-" set ttimeoutlen=0
-" set updatetime=750
+set timeoutlen=10000
+set sidescrolloff=5
 
 set splitright splitbelow
 
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
-
-" highlight lCursor guifg=NONE guibg=Cyan
-" language messages en_US.UTF-4
 
 " disabling copying on deletion
 noremap p "*p
@@ -48,23 +49,12 @@ imap <C-k> <Esc><C-k>
 map <leader>q <cmd>qa<cr>
 map <leader>w <cmd>w<cr>
 map <A-w> <cmd>w<cr>
-map <A-q> <cmd>qa<cr>
+" map <A-q> <cmd>qa<cr>
 map <leader>eq <cmd>bd<cr>
 
 " keeping cursor cursor on the same position after exit from insert mode
 imap <silent> <Esc> <Esc>`^
 
-" finding selected (using in non-default register)
-vnoremap / y/<C-r>"<cr>
-vnoremap ? y?<C-r>"<cr>
-
-" find and replace shortcut
-" map <leader>rc :%s///gc<Left><Left><Left><Left>
-" map <leader>ra :%s///g<Left><Left><Left>
-" vmap <leader>ra :s///g<Left><Left><Left>
-
-" vnoremap <leader>rr ""y:%s/<C-r>"//g<Left><Left>
-" vnoremap <leader>rc :s/<C-r>"//g<Left><Left>
 vnoremap <leader>rr ""y:%s/<C-r>"/
 vnoremap <leader>rc :s/<C-r>"/
 
@@ -77,8 +67,6 @@ noremap @s F,w""d])%""pl""dt,w""P
 
 vmap u <Nop>
 vmap U <Nop>
-" map q <Nop>
-" noremap Q q
 
 map R $
 map _ ^
@@ -89,8 +77,6 @@ nnoremap <leader>p o<Esc>"*p
 nnoremap <leader>P O<Esc>"*p
 nmap <silent> <leader><Esc> <cmd>noh<cr><cmd>echon ''<cr>
 nmap <silent> <A-i> <cmd>noh<cr><cmd>echon ''<cr>
-" nmap <silent> <leader><Esc> <cmd>noh<cr>
-" nmap <silent> <A-'> <cmd>noh<cr>
 map <A-v> <C-v>
 vnoremap < <gv
 vnoremap > >gv
@@ -107,15 +93,14 @@ map <leader>cp <cmd>let @+ = expand("%:p")<cr>
 
 imap <C-Del> <C-o>de
 cmap <C-Del> <C-\>e(strpart(getcmdline(), 0, getcmdpos()-1) . strpart(getcmdline(), getcmdpos()-1 + len(matchstr(getcmdline()[getcmdpos()-1:], '\w\+'))))<CR>
-" cmap <silent> <C-y> <cr><cmd>noh<cr>
 cmap <silent> <A-i> <cr><cmd>noh<cr>
 
 map <C-h> <C-6>
-map <leader>n *``
+map <silent> <leader>n *``
 map # *NN
+"snake case to camel case 
+map <silent> <leader>gc guiwviw:s/\%V_\([a-zA-Z]\)/\u\1<cr><cmd>noh<cr>
+"camel case to snake case 
+map <silent> <leader>gs viw:s/\%V\([a-z]\)\([A-Z]\)/\1_\l\2<cr><cmd>noh<cr>
 
-" " imap <C-Right> <Esc>ea
-augroup autosave
-    autocmd!
-    autocmd TextChanged * silent! write
-augroup END
+map gy `[v`]
