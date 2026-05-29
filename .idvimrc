@@ -7,12 +7,12 @@ set visualbell
 " set multiple-cursors
 " let keep_input_source_in_normal="com.apple.keylayout.ABC" 
 " set keep-english-in-normal
-set exchange
+" set exchange
 set highlightedyank
 set textobj-indent
 set surround
 set commentary
-set enableConsole
+" set enableConsole
 nmap <leader>w <Nop>
 set idearefactormode=keep
 set ideavimsupport=dialog,singleline,console
@@ -34,8 +34,8 @@ map <leader>re <Action>(ExtractMethod)
 map <C-o> <Action>(Back)
 map <C-i> <Action>(Forward)
 map <leader>gt <Action>(GotoTest)
-map gi <Action>(GotoImplementation)
-map gs <Action>(GotoSuperMethod)
+map <leader>gi <Action>(GotoImplementation)
+map <leader>gs <Action>(GotoSuperMethod)
 map <Space>gb <Action>(ShowExecutionPoint)
 map <C-p> <Action>(ParameterInfo)
 nmap gcc <Action>(CommentByLineComment)
@@ -87,7 +87,12 @@ map <leader>mm <Action>(ToggleFullScreen)
 map <leader>cp <Action>(CopyPaths)
 nmap <silent> <leader><Esc> :noh<cr>
 nmap <silent> <A-i> :noh<cr>
+cmap <silent> <A-i> <cr>:noh<cr>
 " nmap <silent> <A-i> <cmd>noh<cr><cmd>echon ''<cr>
 
 map - <Action>(SelectInProjectView)
 map <leader>b <Action>(ActivateVcsChangesToolWindow)
+
+" finding selected (using in non-default register)
+vnoremap * y/<C-r>"<cr>
+vnoremap # y?<C-r>"<cr>

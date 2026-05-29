@@ -17,7 +17,7 @@ set gdefault
 set incsearch
 set hlsearch
 set noswapfile
-set scrolloff=999
+" set scrolloff=999
 set ignorecase
 set smartcase
 set nowrap
@@ -38,6 +38,8 @@ nnoremap yy "*yy
 nnoremap Y "*Y
 noremap <leader>d "*d
 
+map j jzz
+map k kzz
 map <C-j> 10j
 map <C-k> 10k
 map <A-j> 4j
@@ -100,8 +102,11 @@ map <C-h> <C-6>
 map <silent> <leader>n *``
 map # *NN
 "snake case to camel case 
-map <silent> <leader>gc guiwviw:s/\%V_\([a-zA-Z]\)/\u\1<cr><cmd>noh<cr>
+map  <silent> <leader>gc guiwviw:s/\%V_\([a-zA-Z]\)/\u\1<cr><cmd>noh<cr>`<
 "camel case to snake case 
-map <silent> <leader>gs viw:s/\%V\([a-z]\)\([A-Z]\)/\1_\l\2<cr><cmd>noh<cr>
+map <silent> <leader>gs viw:s/\%V\([a-z]\)\([A-Z]\)/\1_\l\2<cr><cmd>noh<cr>`<
+map <silent> <leader>gS <leader>gsviwgU
 
 map gy `[v`]
+
+imap <Home> <C-o>I
