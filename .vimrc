@@ -38,8 +38,8 @@ nnoremap yy "*yy
 nnoremap Y "*Y
 noremap <leader>d "*d
 
-map j jzz
-map k kzz
+nmap j jzz
+nmap k kzz
 map <C-j> 10j
 map <C-k> 10k
 map <A-j> 4j
