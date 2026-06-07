@@ -40,6 +40,8 @@ noremap <leader>d "*d
 
 nmap j jzz
 nmap k kzz
+vmap j jzz
+vmap k kzz
 map <C-j> 10j
 map <C-k> 10k
 map <A-j> 4j
